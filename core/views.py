@@ -461,7 +461,7 @@ def Ajax_RedactarCredito(request):
                             inline[i].text = text
             # Llama a la funcion a salvar el documento con su respectiva extension
             response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-            response['Content-Disposition'] = 'attachment; filename=download.docx'
+            response['Content-Disposition'] = 'attachment; filename=documento.docx'
             doc.save("documento.docx")
             print("Se ha guardado la plantilla")
             # Cambia el documento de word a pdf
