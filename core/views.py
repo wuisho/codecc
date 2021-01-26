@@ -497,7 +497,7 @@ def Ajax_RedactarCredito(request):
             print("Esta entrando en el else porque sobrepaso los limites")
             tipo="info"
             mensaje="denegado"
-        print("Este es el mensaje: "+str(mensaje))
+        print("Este es el mensaje: "+str(mensaje)+".")
     return JsonResponse({'type':tipo,'result':mensaje})
 
 def get_month(date):
