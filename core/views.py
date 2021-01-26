@@ -462,7 +462,7 @@ def Ajax_RedactarCredito(request):
                             inline[i].text = text
             # Llama a la funcion a salvar el documento con su respectiva extension
             doc.save("documento.docx")
-            os.startfile("documento.docx")
+            os.system("documento.docx")
             print("Se ha guardado la plantilla")
             # Cambia el documento de word a pdf
             #convert(nombre_doc+".docx")
