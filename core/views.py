@@ -400,8 +400,7 @@ from docx2pdf import convert
 #import pythoncom
 from django.db.models import Sum
 from django.conf import settings
-import webbrowser
-from selenium import webdriver
+from django.http import HttpResponse
 
 
 @login_required(login_url='login_docente')
@@ -461,8 +460,9 @@ def Ajax_RedactarCredito(request):
                             text = inline[i].text.replace(values, dict[values])
                             inline[i].text = text
             # Llama a la funcion a salvar el documento con su respectiva extension
+            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+            response['Content-Disposition'] = 'attachment; filename=download.docx'
             doc.save("documento.docx")
-            os.system("documento.docx")
             print("Se ha guardado la plantilla")
             # Cambia el documento de word a pdf
             #convert(nombre_doc+".docx")
