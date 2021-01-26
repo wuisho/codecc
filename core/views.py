@@ -401,7 +401,7 @@ from docx2pdf import convert
 from django.db.models import Sum
 from django.conf import settings
 from django.http import HttpResponse
-
+import os.path as path
 
 @login_required(login_url='login_docente')
 # Ajax que se ejecuta cuando se redacta un nuevo credito por los usuarios
@@ -464,6 +464,10 @@ def Ajax_RedactarCredito(request):
             response['Content-Disposition'] = 'attachment; filename=documento.docx'
             doc.save("documento.docx")
             print("Se ha guardado la plantilla")
+            if path.exists("documento.docx"):
+                print("Existe el documento")
+            else:
+                print("No existe el documento")
             # Cambia el documento de word a pdf
             #convert(nombre_doc+".docx")
             #convert(nombre_doc+".docx",nombre_doc+".pdf")
