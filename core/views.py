@@ -402,6 +402,8 @@ from django.db.models import Sum
 from django.conf import settings
 from django.http import HttpResponse
 import os.path as path
+import os
+import urllib
 
 @login_required(login_url='login_docente')
 # Ajax que se ejecuta cuando se redacta un nuevo credito por los usuarios
@@ -460,12 +462,12 @@ def Ajax_RedactarCredito(request):
                             text = inline[i].text.replace(values, dict[values])
                             inline[i].text = text
             # Llama a la funcion a salvar el documento con su respectiva extension
-            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-            response['Content-Disposition'] = 'attachment; filename=documento.docx'
             doc.save("documento.docx")
             print("Se ha guardado la plantilla")
             if path.exists("documento.docx"):
                 print("Existe el documento")
+                fullfilename = "documento.docx"
+                urllib.urlretrieve("http://www.google.com", fullfilename)
             else:
                 print("No existe el documento")
             # Cambia el documento de word a pdf
