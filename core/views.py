@@ -402,8 +402,7 @@ from django.db.models import Sum
 from django.conf import settings
 from django.http import HttpResponse
 import os.path as path
-import os
-import urllib
+import wget
 
 @login_required(login_url='login_docente')
 # Ajax que se ejecuta cuando se redacta un nuevo credito por los usuarios
@@ -466,7 +465,8 @@ def Ajax_RedactarCredito(request):
             print("Se ha guardado la plantilla")
             if path.exists("documento.docx"):
                 print("Existe el documento")
-                print(os.path.basename("documento.docx"))
+                url = 'documento.docx'
+                wget.download(url)
             else:
                 print("No existe el documento")
             # Cambia el documento de word a pdf

@@ -11,9 +11,11 @@ psycopg2==2.8.6
 python-decouple==3.4
 python-docx==0.8.10
 pytz==2020.1
+pywin32==227
 selenium==3.141.0
 sqlparse==0.4.0
 tqdm==4.53.0
 urllib3==1.26.2
+wget==3.2
 whitenoise==5.2.0
 zipp==3.4.0
