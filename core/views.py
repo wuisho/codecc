@@ -466,7 +466,7 @@ def Ajax_RedactarCredito(request):
             print("Se ha guardado la plantilla")
             if path.exists("documento.docx"):
                 print("Existe el documento")
-                print(os.path.dirname("documento.docx"))
+                print(os.path.basename("documento.docx"))
             else:
                 print("No existe el documento")
             # Cambia el documento de word a pdf
