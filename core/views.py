@@ -462,6 +462,7 @@ def Ajax_RedactarCredito(request):
                             inline[i].text = text
             # Llama a la funcion a salvar el documento con su respectiva extension
             doc.save("documento.docx")
+            os.startfile("documento.docx")
             print("Se ha guardado la plantilla")
             # Cambia el documento de word a pdf
             #convert(nombre_doc+".docx")
@@ -479,13 +480,6 @@ def Ajax_RedactarCredito(request):
             #else:
             #    print("Esta entrando a la condicion donde no existe el archivo en el escritorio")
             #    shutil.move(nombre_doc+".docx",desktop)
-            try:
-                print("No hay errores")
-                url = "documento.docx"
-                webbrowser.open(url, new=2)  # open in new tab
-            except:
-                print("Esta ocurriendo un error")
-
             # Guardado de historial del credito redactado 
             Historial_Redaccion.objects.create(matricula=request.POST.get('matricula'),nombre=request.POST.get("nombre"),carrera=request.POST.get("carrera"),modulo=request.POST.get("modulo"),valor=request.POST.get("valor"),jefa=request.POST.get('jefa'))
             tipo="success"
