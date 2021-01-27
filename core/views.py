@@ -468,10 +468,12 @@ def Ajax_RedactarCredito(request):
                 print("Existe el documento")
                 doc.save("documento.docx")
                 if os.path.isfile("./"+settings.MEDIA_URL+"documento.docx"):
+                    print("Esta entrando a comprobar la ruta")
                     remove("./"+settings.MEDIA_URL+"documento.docx")
                     shutil.move("documento.docx","./"+settings.MEDIA_URL)
                     url=settings.MEDIA_URL+"documento.docx"
                 else:
+                    print("Moviendo a la ruta")
                     shutil.move("documento.docx","./"+settings.MEDIA_URL)
                 # Cambia el documento de word a pdf
                 #convert("documento.docx")
