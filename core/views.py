@@ -410,6 +410,7 @@ def Ajax_RedactarCredito(request):
     tipo=""
     mensaje=""
     doc=""
+    url=""
     if request.is_ajax and request.POST:
         # Inicializacion de funcion especial para realizar la modificacion de la plantilla
         #pythoncom.CoInitialize()
@@ -465,12 +466,15 @@ def Ajax_RedactarCredito(request):
             if path.exists("documento.docx"):
                 print("Existe el documento")
                 doc.save("documento.docx")
-                shutil.move("documento.docx","./"+settings.MEDIA_URL)
+                if os.path.isfile("./"+settings.MEDIA_URL+"documento.docx"):
+                    remove("./"+settings.MEDIA_URL+"documento.docx")
+                    shutil.move("documento.docx","./"+settings.MEDIA_URL)
+                    url=settings.MEDIA_URL+"documento.docx"
+                else:
+                    shutil.move("documento.docx","./"+settings.MEDIA_URL)
                 # Cambia el documento de word a pdf
                 #convert("documento.docx")
                 #convert("documento.docx","documento.pdf")
-                #webbrowser.open_new("documento.pdf")
-                
             else:
                 print("No existe el documento")
             
@@ -499,7 +503,7 @@ def Ajax_RedactarCredito(request):
             tipo="info"
             mensaje="denegado"
         print("Este es el mensaje: "+str(mensaje)+".")
-    return JsonResponse({'type':tipo,'result':mensaje})
+    return JsonResponse({'type':tipo,'result':mensaje,'url':url})
 
 def get_month(date):
     months = ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")

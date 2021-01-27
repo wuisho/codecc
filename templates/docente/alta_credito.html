@@ -249,8 +249,9 @@ $("#generar").on('click',function(){
         else if(data.result=="realizado"){
           Toast.fire({
           icon: data.type,
-          title: "Se ha completado el proceso, el archivo se a guardado en el escritorio",
+          title: "Se ha completado el registro correctamente se descargara el archivo",
         })
+        window.open(data.url,"_blank")
         $("#matricula").val("")
         $("#nombre").val("")
         $("#carrera").val("")
