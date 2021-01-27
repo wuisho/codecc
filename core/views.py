@@ -463,6 +463,7 @@ def Ajax_RedactarCredito(request):
             # Llama a la funcion a salvar el documento con su respectiva extension
             doc.save("documento.docx")
             print("Se ha guardado la plantilla")
+            print("Esta es la ruta media: "+str(settings.MEDIA_URL))
             if path.exists("documento.docx"):
                 print("Existe el documento")
                 doc.save("documento.docx")
