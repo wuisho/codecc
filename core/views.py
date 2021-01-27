@@ -475,12 +475,12 @@ def Ajax_RedactarCredito(request):
                 else:
                     print("Moviendo a la ruta")
                     shutil.move("documento.docx","./"+settings.MEDIA_URL)
+                    url=settings.MEDIA_URL+"documento.docx"
                 # Cambia el documento de word a pdf
                 #convert("documento.docx")
                 #convert("documento.docx","documento.pdf")
             else:
                 print("No existe el documento")
-            
             # Se remueve el documento word y se pasa el pdf al escritorio del usuario
             #remove(nombre_doc+".docx")
             #os.rename(nombre_doc+".docx",nombre_doc+".docx")
@@ -506,6 +506,7 @@ def Ajax_RedactarCredito(request):
             tipo="info"
             mensaje="denegado"
         print("Este es el mensaje: "+str(mensaje)+".")
+        print("Esta es la url: "+str(url))
     return JsonResponse({'type':tipo,'result':mensaje,'url':url})
 
 def get_month(date):
